@@ -23,6 +23,24 @@ def set():
         except ValueError:
             md.showerror("Ощибка","Не верный формат времени")
 
+def check():
+    global t
+    if t:
+        now = time.time()
+        if now >= t:
+            play_cnd()
+            t = None
+    window.after(10000, check)
+
+def lay_cnd():
+    global music
+    music = True
+    pygame.mixer.int()
+    pygame.mixer.music.load("reminder.mp3")
+    pygame.mixer.music.play()
+
+window = Tk()
+window.title("Напоминалка")
 
 
 
